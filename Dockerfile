@@ -223,5 +223,5 @@ RUN  apk add --no-cache \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 443 51415 3000
+EXPOSE 8080 51415 3000
 VOLUME /config /downloads
