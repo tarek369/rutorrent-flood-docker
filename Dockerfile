@@ -9,10 +9,10 @@ ARG BUILD_CORES
 LABEL build_version="tk version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
-ARG MEDIAINF_VER="19.04"
+ARG MEDIAINF_VER="19.07"
 ARG RTORRENT_VER="v0.9.8"
 ARG LIBTORRENT_VER="v0.13.8"
-ARG CURL_VER="7.65.1"
+ARG CURL_VER="7.65.3"
 ARG GEOIP_VER="1.1.1"
 
 # set env
@@ -101,7 +101,7 @@ ldconfig /usr/bin && ldconfig /usr/lib && \
         /defaults/rutorrent-conf/ && \
  rm -rf \
         /defaults/rutorrent-conf/users && \
-  pip3 install CfScrape && \
+  pip3 install CfScrape \
   cloudscraper && \
 # install webui extras
 # QuickBox Theme
