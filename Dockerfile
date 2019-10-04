@@ -1,18 +1,18 @@
 FROM lsiobase/alpine:3.8
 
-MAINTAINER romancin
+MAINTAINER tarek
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG BUILD_CORES
-LABEL build_version="Romancin version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="tk version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # package version
 ARG MEDIAINF_VER="19.04"
-ARG RTORRENT_VER="v0.9.7"
-ARG LIBTORRENT_VER="v0.13.7"
-ARG CURL_VER="7.64.1"
+ARG RTORRENT_VER="v0.9.8"
+ARG LIBTORRENT_VER="v0.13.8"
+ARG CURL_VER="7.65.1"
 ARG GEOIP_VER="1.1.1"
 
 # set env
@@ -20,7 +20,7 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV CONTEXT_PATH=/
 ENV CREATE_SUBDIR_BY_TRACKERS="no"
-    
+
 RUN NB_CORES=${BUILD_CORES-`getconf _NPROCESSORS_CONF`} && \
  apk add --no-cache \
 	bash-completion \
@@ -118,6 +118,7 @@ mv rutorrent-thirdparty-plugins/* . && \
 rm -rf rutorrent-thirdparty-plugins && \
 cd /usr/share/webapps/rutorrent/ && \
 chmod 755 plugins/filemanager/scripts/* && \
+rm -rf plugins/fileupload && \
 cd /tmp && \
 git clone https://github.com/mcrapet/plowshare.git && \
 cd plowshare/ && \
@@ -203,5 +204,5 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 COPY root/ /
 
 # ports and volumes
-EXPOSE 883 51415 3000
+EXPOSE 8080 51415 3000
 VOLUME /config /downloads
