@@ -102,6 +102,7 @@ ldconfig /usr/bin && ldconfig /usr/lib && \
  rm -rf \
         /defaults/rutorrent-conf/users && \
   pip3 install CfScrape && \
+  cloudscraper && \
 # install webui extras
 # QuickBox Theme
 git clone https://github.com/QuickBox/club-QuickBox /usr/share/webapps/rutorrent/plugins/theme/themes/club-QuickBox && \
